@@ -4,12 +4,12 @@ import openai
 
 from CommandHandler import CommandHandler
 
-# Set OpenAI API key
-openai.api_key = "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"
-
-# Define function to summarize a document
+#I am currently utilizing the open api key which allows me to have the capacity to be able to respond to questions, which takes out a major hurdle in the way, due to the api key, however there are some features that the chatbot can't do that I use this api key fpr
+openai.api_key = "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"
 
 
+
+#this is a subclass
 class SummarizeHandler(CommandHandler):
     def __init__(self, command, description):
         super().__init__(command, "Print a hello message")
@@ -19,14 +19,18 @@ class SummarizeHandler(CommandHandler):
         with open(args[0],) as f:
             data = f.readlines()
         sum = self.summarize(data)
-        print(sum)
+        return sum
 
     def summarize(self, document):
         # Use OpenAI language model to generate summary of document
         response = openai.Completion.create(
+            #the engine that OpenAI uses to process the input
             engine="text-davinci-002",
             prompt=f"Please summarize the following document:\n\n{document}",
+            #allows the result to be more varied/creative the more temperature the more original
             temperature=0.5,
+            #the more you increase this the more complex the answers would be but the tradeoff is that it 
+            #takes more time to process the answer
             max_tokens=100,
             top_p=1.0,
             frequency_penalty=0,
@@ -54,7 +58,7 @@ class ChatbotHandler(CommandHandler):
         question = " ".join(args)
         print("question:%s" % question)
         ans = self.answer(question)
-        print(ans)
+        return(ans)
 
     def answer(self, question):
         # Use OpenAI language model to generate summary of document
