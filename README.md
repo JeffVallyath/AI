@@ -1,3 +1,6 @@
 # AI
-My code is about developing a bot that can respond to questions, kind of like Siri. Some libraries I may use are similar libraries to the type that other already devloped AIs have. Since my passion for coding is to advance in the field of AI, I feel this is a suitable proect for me, and definitely a challenge for me.
- 
+This is my AI project. In this project, my goal is to have working code in which this program can respond to any input that the user inputs, even if it is random.
+
+I currently am utilizing Open AI's API to actually have the capacity to respond to questions, and I am adding the ability for it to browse the internet as well, something that Open AI cannot. I have just added a GUI and a stock ticker function for my AI project for some extra features in addition to all the previous features it currently possessed.
+
+A future goal may be to add a way to summarize more efficiently and accurately using the summarize command.
