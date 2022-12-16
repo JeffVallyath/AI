@@ -7,15 +7,15 @@ A future goal may be to add a way to summarize more efficiently and accurately u
 
 
 Commands:
-Use the help command to see all the possible commands of what we added                                    How to call these commands
+Use the help command to see all the possible commands of what we added
 
-hello command - Has the bot give a greeting.                                                              Written as hello
-echo command - can repeat whatever user inputs                                                            Written as echo <what you want it to repeat>
-summary command - WIP, but it can summarize a .txt file as long as you provide the file path              Written as summary <filepath/filename has to be a .txt file> 
-date command - will tell the date of today                                                                Written as date
-time command - will tell the time of today                                                                Written as time
-help command - as previously explained, can see every command possible                                    Written as help
-$ command - will show current stock prices                                                                Written as $ <stock symbol for example, AAPL)
+1. hello command - Has the bot give a greeting. Written as hello
+2. echo command - can repeat whatever user inputs. Written as echo <what you want it to repeat>.
+3. summary command - WIP, but it can summarize a .txt file as long as you provide the file path. Written as summary <filepath/filename has to be a .txt file>.
+4. date command - will tell the date of today. Written as date.
+5. time command - will tell the time of today. Written as time
+6. help command - as previously explained, can see every command possible. Written as help
+7 .$ command - will show current stock prices. Written as $ <stock symbol for example, AAPL)
 
 
 The MarkovChain is a more complex command, so it works in two parts:
