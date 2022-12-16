@@ -1,6 +1,10 @@
 import datetime
 from datetime import date
 import yfinance as yf
+import random
+import os
+#these two variables are for the markov generator
+chain = {}
 
 # define a dictionary of command handler classes
 handlers_help = {
@@ -74,6 +78,7 @@ class QuitHandler(CommandHandler):
         print("Goodbye!")
         exit()
 
+#this is a subclass of the command handler which handles the Stock
 class StockHandler(CommandHandler):
     def __init__(self, command, description):
         super().__init__(command, "Add the arguments together")
@@ -92,3 +97,48 @@ class StockHandler(CommandHandler):
         #print(stock_quotes)
 
         return f"Current price: {stock_quotes['regularMarketPrice']}"
+
+class MarkovTrainHandler(CommandHandler):
+    def __init__(self, command, description):
+        super().__init__(command, "Add the arguments together")
+
+    def handle(self, args):
+        data = open(args[0]) 
+        index = 1
+        #reads every line that it gets from the text in the parameters which can be anything based on what the arg takes in
+        data = data.readline()
+
+        #splits the data into a list of words
+        data = data.split(' ')
+        #creates a for loop that creates a dictionary with a word as a key and a list of possible next words as a value
+        for word in data[index:]:
+            #this allows us to continue going through every word in the data
+            key = data[index-1]
+            if key in chain:
+                #if the word already appears in chain it appends it to the chain list which at first appears empty but gradually there is more because of the for loop
+                chain[key].append(word)
+            else:
+                #if the key isnt present, it creates a new word
+                chain[key] = [word]
+            index += 1
+        
+
+class MarkovGenHandler(CommandHandler):
+    def __init__(self, command, description):
+        super().__init__(command, "Add the arguments together")
+
+    def handle(self, args):
+        #uses the random library to randomy choose words
+        if len(args) < 1:
+            return "Missing parameter"
+        count = int(args[0])
+        word1 = random.choice(list(chain.keys()))
+        #captalizes word one to follow propper grammar rules
+        message = word1.capitalize()
+
+        while len(message.split(' ')) < count:
+            word2 = random.choice(chain[word1])
+            word1 = word2
+            #adds word 2 to the message
+            message += ' ' + word2 
+        return message
