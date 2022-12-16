@@ -14,22 +14,22 @@ from OpenAI import *
 handlers = {
     "hello": HelloHandler,
     "echo": EchoHandler,
-    "add":   AddHandler,
     "summary": SummarizeHandler,
     "date": DateHandler,
     "quit": QuitHandler,
     "time": TimeHandler,
     "help": HelpHandler,
     "$": StockHandler,
+    #these two commands work together, first needing to call MarkovTrain (name your file here) and then MarkovGen (X) x being the number of words that the sentence/paragraph should be
     "MarkovTrain": MarkovTrainHandler,
     "MarkovGen": MarkovGenHandler
 }
 
-#PyQt6 is the library that assists the 
+#PyQt6 is the library that assists with creating the GUI for the AI/chatbot
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
-#from requests import Session
+
 
 #this function gives the GUI a more black/grey color and helps make the palette a bit more fancy, with the numbers being rgb values
 def set_palette(app):
