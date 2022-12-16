@@ -5,6 +5,8 @@ I currently am utilizing Open AI's API to actually have the capacity to respond 
 
 A future goal may be to add a way to summarize more efficiently and accurately using the summarize command.
 
+The main file is Ai_project.py so to execute the whole program run it from that file.
+
 
 Commands:
 Use the help command to see all the possible commands of what we added
