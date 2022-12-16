@@ -21,14 +21,17 @@ handlers = {
     "time": TimeHandler,
     "help": HelpHandler,
     "$": StockHandler,
+    "MarkovTrain": MarkovTrainHandler,
+    "MarkovGen": MarkovGenHandler
 }
 
-
+#PyQt6 is the library that assists the 
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
-from requests import Session
+#from requests import Session
 
+#this function gives the GUI a more black/grey color and helps make the palette a bit more fancy, with the numbers being rgb values
 def set_palette(app):
     app.setStyle("Fusion")
     darkPalette = app.palette()
@@ -65,7 +68,7 @@ layout.addWidget(message)
 window = QWidget()
 window.setLayout(layout)
 
-#sets the background color of the gui
+#sets the background color of the gui by calling the function we made earlier
 set_palette(app)
 
 #shows the final window of the gui
