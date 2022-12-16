@@ -1,0 +1,124 @@
+Here are the sources that I used for this project, and big thanks to these sources as this project
+would not be possible otherwise.
+
+
+1. OpenAI is the first major source being the main part of this program. It gives the capacity for this program 
+to respond to questions using it's Davinci-002 engine which I capitalize on by using its API (application programming interface) 
+and getting a key. 
+https://beta.openai.com/docs/introduction
+
+
+
+2. I use some of the code from these two sources to create a GUI
+https://github.com/pyqt/examples/blob/_/src/11%20PyQt%20Thread%20example/01_single_threaded.py
+https://github.com/AlessioMichelassi/pyQt6ChatV0.0.1/blob/master/chatClient/main.py
+
+
+
+3. To get a skeleton of the CommandHandler, I utilized ChatGTP and I expanded on this code that it gave me from there
+# define the base class for command handlers
+class CommandHandler:
+    def __init__(self, command, description):
+        self.command = command
+        self.description = description
+
+    def handle(self, args):
+        raise NotImplementedError
+
+# define a dictionary of command handler classes
+handlers = {
+    "hello": HelloHandler,
+    "echo": EchoHandler,
+    "add": AddHandler,
+    "quit": QuitHandler,
+}
+
+# define the main loop
+while True:
+    # print a prompt and get the user input
+    input_str = input("> ")
+   
+    # split the input string into tokens (separated by whitespace)
+    tokens = input_str.strip().split()
+   
+    # if there are no tokens, go to the next iteration of the loop
+    if not tokens:
+        continue
+       
+    # get the command and any arguments from the tokens
+    command = tokens[0]
+    args = tokens[1:]
+   
+    # check if the command is in the dictionary of handlers
+    if command in handlers:
+        # create an instance of the corresponding class
+        handler = handlers[command](command, "")
+        # call the handle() method and pass in the arguments
+        handler.handle(args)
+    else:
+        # if the command is not recognized, print an error message
+        print(f"Unknown command: {command}")
+
+# define the different command handler classes
+
+class HelloHandler(CommandHandler):
+    def __init__(self, command, description):
+        super().__init__(command, "Print a hello message")
+
+    def handle(self, args):
+        # print a hello message
+        print("Hello!")
+
+class EchoHandler(CommandHandler):
+    def __init__(self, command, description):
+        super().__init__(command, "Echo the arguments back to the user")
+
+    def handle(self, args):
+        # print the arguments back to the user
+        print(" ".join(args))
+
+class AddHandler(CommandHandler):
+    def __init__(self, command, description):
+        super().__init__(command, "Add the arguments together")
+
+    def handle(self, args):
+        # convert the arguments to integers and add them together
+        result = sum(int(arg) for arg in args)
+        print(result)
+
+class QuitHandler(CommandHandler):
+    def __init__(self, command, description):
+        super().__init__(command, "Quit the program")
+
+    def handle(self, args):
+        # exit the program
+        print("Goodbye!")
+        exit()
+
+and here is ChatGPT's link: https://chat.openai.com/chat
+
+
+
+4. For the Markov Chain's code, I used this source:
+https://medium.com/analytics-vidhya/making-a-text-generator-using-markov-chains-e17a67225d10
+
+
+
+5. For the stock ticker, we generated code from ChatGPT as a skeleton to make the StockHandler work here is the code it generated:
+import yfinance as yf
+
+# Define the stock you want to get quotes for
+stock = "AAPL"
+
+# Get the stock info
+stock_info = yf.Ticker(stock)
+
+# Get the stock quotes
+stock_quotes = stock_info.info
+
+# Print the stock quotes
+print(stock_quotes)
+
+(ChatGPT's link is at the bottom of #3)
+
+

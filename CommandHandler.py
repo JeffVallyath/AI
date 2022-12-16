@@ -8,14 +8,13 @@ chain = {}
 
 # define a dictionary of command handler classes
 handlers_help = {
-    "hello": "HelloHandler",
-    "echo": "EchoHandler",
-    "add": "AddHandler",
-    "summary": "SummarizeHandler",
-    "date": "DateHandler",
-    "quit": "QuitHandler",
-    "time": "TimeHandler",
-    "help": "HelpHandler",
+    "hello": "Print Hello",
+    "echo": "Echo the input",
+    "summary": "Summarize a Text file",
+    "date": "Print Date",
+    "quit": "Quit",
+    "time": "Print Time",
+    "help": "Show Help",
 }
 
 #this is the super class which initializes all the commands correlated with the corresponding subclasses
@@ -51,22 +50,16 @@ class TimeHandler(CommandHandler):
 #this is a subclass of the command handler class which handles the help command and when the help command is registered it will print all the possible commands one can use in this chatbot
 class HelpHandler(CommandHandler):
     def __init__(self, command, description):
-        super().__init__(command, "Print Date")
+        super().__init__(command, "Help")
 
     def handle(self, args):
         # print the arguments back to the user
+        help = ""
         for key in handlers_help:
-            print(key)
+            help += key + "    " + handlers_help[key] + "\n"
+        return help    
 
-#this is a subclass of the add handler which handles the add command which can summarize two numbers, the thing is this subclass may not be necessary considering the AI already has a inbuilt calculator
-class AddHandler(CommandHandler):
-    def __init__(self, command, description):
-        super().__init__(command, "Add the arguments together")
 
-    def handle(self, args):
-        # convert the arguments to integers and add them together
-        result = sum(int(arg) for arg in args)
-        print(result)
 
 #this is a subclass of the command handler which handles the quit command and when the quit command s registered will print Goodbye and quit the program 
 class QuitHandler(CommandHandler):

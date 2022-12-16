@@ -5,7 +5,7 @@ import openai
 from CommandHandler import CommandHandler
 
 #I am currently utilizing the open api key which allows me to have the capacity to be able to respond to questions, which takes out a major hurdle in the way, due to the api key, however there are some features that the chatbot can't do that I use this api key fpr
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 
