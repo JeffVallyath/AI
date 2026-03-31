@@ -27,14 +27,6 @@ The MarkovChain is a more complex command, so it works in two parts:
 
 
 
-
-
-API key:
-The API key will not work because of security issues, it automatically disables the key so I will send in outlook the api key, copy the api key and then go here https://github.com/JeffVallyath/AI/blob/main/OpenAI.py#L8 and change the api key to the key in outlook. 
-
-
-
-
 Dependencies:
 pip install OpenAI
 pip install pyQt6
